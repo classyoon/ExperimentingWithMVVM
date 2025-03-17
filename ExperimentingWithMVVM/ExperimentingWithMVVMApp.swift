@@ -22,10 +22,12 @@ struct ExperimentingWithMVVMApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    @StateObject var vm = Library()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                LibraryView(library: vm)
+            }
         }
         .modelContainer(sharedModelContainer)
     }
